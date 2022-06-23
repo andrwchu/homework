@@ -26,6 +26,9 @@ for i in range(1, len(seq) - w + 1):
 		cgCount -= 1
 	print(f'{i} {seq[i:i + w]} {(cgCount / w):.4f}')
 
+# pros: This algorithm has a better time complexity than a nested loop. This algorithm only needs to process the entire seq once [O(N)], rather than the nested loop's O(N**2).
+# cons: This algorithm can be more difficult to read intuitively.
+
 """
 python3 27gcwin.py
 0 ACGACGCAGGA 0.6364
