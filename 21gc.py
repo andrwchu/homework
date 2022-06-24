@@ -9,11 +9,11 @@ dna = 'ACAGAGCCAGCAGATATACAGCAGATACTAT' # feel free to change
 sum = 0;
 for i in range(len(dna)):
 	if dna[i] == 'G' or dna[i] == 'C':
-		sum+=1
+		sum += 1
 		
-print('%.2f' % (sum / len(dna)))
+print('%.2f' % (sum / len(dna))) 
 print('{:.2f}'.format(sum / len(dna)))
-print(f'{(sum / len(dna)):.2f}')
+print(f'{(sum / len(dna)):.2f}') # fstring format
 
 """
 python3 21gc.py

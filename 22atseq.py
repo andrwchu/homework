@@ -11,21 +11,19 @@ import random
 
 s = ''
 sum = 0
-for i in range(30):
-	r = random.randint(1, 100)
-	if(r<=60):
-		if(r%2==0):
-			s += 'A'
-		else:
-			s += 'T'
-		sum+=1
+seq_len = 30
+percent = 0.60
+
+for i in range(seq_len):
+	r = random.random()
+	if(r < percent):
+		s += random.choice('AT')
+		sum += 1
 	else:
-		if(r%2==0):
-			s += 'G'
-		else:
-			s += 'C'
+		s += random.choice('GC')
+	
 			
-print(len(s), sum / len(s), s)
+print(seq_len, sum / len(s), s)
 
 
 """

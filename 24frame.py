@@ -8,14 +8,14 @@ dna = 'ATGGCCTTT'
 
 # single loop
 for i in range(len(dna)):
-	print(i, i%3, dna[i])
+	print(i, i % 3, dna[i])
 	
 print('- - -')
 
 # nested loops
-for i in range(0, len(dna), 3):
+for i in range(0, len(dna) - 2, 3):
 	for j in range(3):
-		print(i +j, j, dna[i + j])
+		print(i + j, j, dna[i + j])
 
 """
 python3 24frame.py

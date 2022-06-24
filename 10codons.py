@@ -5,9 +5,9 @@
 
 dna = 'ATAGCGAATATCTCTCATGAGAGGGAA'
 
-# your code goes here
-for c in range(0,len(dna),3):
-	print(dna[c:c+3])
+
+for i in range(0, len(dna) -2, 3):
+	print(dna[i:i+3])
 
 """
 python3 10codons.py

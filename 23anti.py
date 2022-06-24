@@ -5,18 +5,14 @@
 
 dna = 'ACTGAAAAAAAAAAA'
 
-s = ''
-for i in dna:
-	if i == 'A':
-		s = 'T' + s
-	elif i == 'T':
-		s = 'A' + s
-	elif i == 'C':
-		s = 'G' + s
-	else:
-		s = 'C' + s
+rc = ''
+for c in dna:
+	if c == 'A':   rc = 'T' + rc
+	elif c == 'T': rc = 'A' + rc
+	elif c == 'C': rc = 'G' + rc
+	else:          rc = 'C' + rc
 	
-print(s)
+print(rc)
 
 """
 python3 23anti.py

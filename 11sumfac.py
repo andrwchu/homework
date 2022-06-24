@@ -7,16 +7,15 @@
 
 n = 5
 
-# your code goes here
+sum = 0
+factorial = 1
 
-sum=0
-factorial=1
+for i in range(1, n+1):
+	sum += i
+	factorial *= i
 
-for i in range(1,n+1):
-	sum+=i
-	factorial*=i
-	print('sum:', sum)
-print('fac:', factorial)
+print(n, sum, factorial)
+
 
 """
 python3 11sumfac.py
