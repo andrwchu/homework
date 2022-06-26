@@ -29,13 +29,10 @@ gcode = {
 def toProtein(s):
 	protein = ''
 	for i in range(0, len(s) - 2, 3):
-		block = s[i:i+3]
-		try:
-			protein += gcode[block.upper()]
-		except KeyError:
-			protein += 'X'
+		block = s[i:i + 3].upper()
+		if block in gcode: protein += gcode[block.upper()]
+		else:              protein += 'X'
 	print(protein)
-
 
 f = open(sys.argv[1])
 for line in f.readlines():
