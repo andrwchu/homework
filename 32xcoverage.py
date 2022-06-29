@@ -14,26 +14,18 @@ size = int(sys.argv[1])
 number = int(sys.argv[2])
 length = int(sys.argv[3])
 
-chromosome = [0 for x in range(size)]
+coverage = [0] * size
 for i in range(number):
-	start = random.randint(0, size - length - 1)
+	start = random.randint(0, size - length)
 	for j in range(length):
-		chromosome[start + j] += 1
+		coverage[start + j] += 1
 
-currentCoverage = chromosome[0]
-coverage = [currentCoverage]
-for i in range(1, len(chromosome)):
-	if chromosome[i - 1] != chromosome[i]: coverage.append(chromosome[i]) 
+coverage = coverage[length - 1: -(length - 1)]
 
-# remove ends of chromosome that got 0 coverage
-if(coverage[0] == 0): coverage.pop(0)
-if(coverage[-1] == 0): coverage.pop(-1)
 
 average = sum(coverage) / len(coverage)
 
-coverage.sort()
-
-print(f'{coverage[0]} {coverage[-1]} {average:.5f}')
+print(f'{min(coverage)} {max(coverage)} {average:.5f}')
 
 """
 python3 32xcoverage.py 1000 100 100
