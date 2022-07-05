@@ -1,3 +1,4 @@
+import argparse
 import mcb185
 
 """
@@ -57,14 +58,27 @@ def missing_kmer(seq, k):
 	return k_list
 
 
-file1 = "/home/andrwchu/Work/FinalProjects/Data/chr1.fa"
-for name, seq in mcb185.read_fasta(file1):
+parser = argparse.ArgumentParser(description="missing k-mers")
+parser.add_argument(
+	"--f", required=True, type=str, metavar="<str>", help="required string argument"
+)
+parser.add_argument(
+	"--show_missing", default=False, action="store_true", help="optional boolean flag"
+)
+arg = parser.parse_args()
+
+seq_file = arg.f
+show_missing = arg.show_missing
+
+for name, seq in mcb185.read_fasta(seq_file):
 	k = 1
-	while(True):
+	while True:
 		missing = missing_kmer(seq, k)
 		if len(missing) == 0:
 			k += 1
 		else:
 			break
-	print(missing)
-	print(k)
+
+	if show_missing:
+		print(missing)
+	print(f"{name.split()[0]}:\nk = {k}")
