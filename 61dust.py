@@ -32,7 +32,7 @@ arg = parser.parse_args()
 def entropy(char_dict):
 	symbols = len(char_dict.keys())
 	freqs = char_dict.values()
-	
+
 	bits = 0
 	for freq in freqs:
 		p = freq / symbols
@@ -54,15 +54,15 @@ soft_mask = not arg.hard
 for name, seq in mcb185.read_fasta(file):
 	print('>' + name)
 	masked_seq = ''
-	if window > len(seq): 
+	if window > len(seq):
 		print(seq)
 		continue
-	
+
 	# use cursor to make sure entire window is masked and not overwritten
-	cursor = 0  
+	cursor = 0
 	for i in range(len(seq) - window):
 		if not cursor == i: continue
-		
+
 		char_dict = frequency(seq[i:i + window])
 		if entropy(char_dict) < min_bits:
 			if soft_mask:
@@ -72,7 +72,7 @@ for name, seq in mcb185.read_fasta(file):
 			cursor += window
 		else:
 			masked_seq = masked_seq[:i] + seq[i:i + window]
-			
+
 		cursor += 1
-		
+
 	print(masked_seq)

@@ -7,6 +7,7 @@ Generate new words from the tables of frequencies
 """
 
 import random
+import re
 
 
 def find_i(arr, target):
@@ -15,6 +16,7 @@ def find_i(arr, target):
 			return i
 	return -1
 
+
 def find_and_add(arr, c):
 	ci = find_i(one, c)
 	if ci < 0:
@@ -22,7 +24,21 @@ def find_and_add(arr, c):
 		one.append(new_c)
 		one[ci][1] += 1
 
-FILE = "/home/andrwchu/Work/FinalProjects/Data/en.txt"
+
+def clean_line(s):
+	s = re.sub(r"[\d*_]", "", s)
+	s = re.sub(r"[^\w\s]", "", s)
+	s = s.replace("\n", " ")
+
+	s = s.lower()
+	return s
+
+def recurse(arr, target_arr):
+	target = target_arr[0]
+
+
+
+FILE = "/home/andrwchu/Work/homework/FinalProjects/Data/en.txt"
 
 f = open(FILE)
 
@@ -37,12 +53,11 @@ count3 = 0
 lines = f.readlines()
 
 for i in range(len(lines) - 1):
-	line = lines[i].replace("\n", " ")
+	line = clean_line(lines[i])
+	line1 = clean_line(lines[i - 1])
 	length = len(line)  # length of original line
 
-	line = lines[i - 1].replace("\n", " ")[-2:] + line  # prepend previous line
-	line = line.lower()
-	if(i<5): print(line)
+	line = line1[-2:] + line  # prepend previous line
 
 	for j in range(2, len(line)):
 		c = line[j]
@@ -55,5 +70,10 @@ for i in range(len(lines) - 1):
 			one.append(new_c)
 		one[ci][1] += 1
 
+		ci2 = find_i(two, c1)
+		if ci2 < 0:
+			new_ci2 = [ci, [c, 0]]
+			two.append(new_ci2)
 
+		ifci
 print(one)

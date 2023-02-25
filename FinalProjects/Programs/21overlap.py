@@ -7,7 +7,6 @@ Simple lists
 Dictionaries
 Sorted lists
 Compare time, memory, and programming effort
-
 """
 
 import math
@@ -70,7 +69,7 @@ fa = ["exon", rand_feature(4, 5, 5, ["I", "II"])]
 fb = ["SNP", rand_feature(4, 5, 5, ["I", "II"])]
 fc = ["peak", rand_feature(4, 5, 5, ["I", "II"])]
 
-F = [fb, fc, fa]
+F = [fa, fb, fc]
 
 for f in F:
 	print(f[0], f[1])
@@ -80,7 +79,7 @@ for k, markers in process(F):
 
 	opened = []
 	for i in markers:
-		if i[2]:
+		if i[2]: # start marker
 			for j in opened:
 				ref_start, ref_end = i[0], i[1]
 				comp_start, comp_end = j[0], j[1]
